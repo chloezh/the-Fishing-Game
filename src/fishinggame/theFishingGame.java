@@ -16,7 +16,7 @@ public class theFishingGame {
     private Ellipse range = new Ellipse(0,0,150,70);
     //------------TO DO-------------: set color for the range
 
-    private Ellipse fish = new Ellipse(0,0,30,30);
+    private Ellipse fishRep = new Ellipse(0,0,30,30);
     //------------TO DO-------------: set color for the fish
 
     private List<String> backpack = new ArrayList<String>();
@@ -60,6 +60,11 @@ public class theFishingGame {
     backpackWeightTitle.setText("Weight(kg)");
     backpackWeightTitle.setCenter(0,0); //------------TO DO-------------
     backpackGroup.add(backpackWeightTitle);
+
+    private GraphicsText notSuccess;
+    notSuccess.setFont(FontStyle.PLAIN, 10);
+    notSuccess.setText("Sorry, the fish got away :(");
+    notSuccess.setCenter(0,0);
 
     Image character = new Image(0,0,"doc/pics/character.png");
     character.setMaxWidth(15); //------------TO DO-------------
@@ -116,6 +121,7 @@ public class theFishingGame {
         Random rand = new Random();
 
         //------------TO DO-------------: how to determine min and max
+        //------------TO DO-------------: how to use the time (canvas pause??)
         double waitingtime = rand.nextDouble() * 5; 
 
         //------------TO DO-------------: after the waiting time, add the oval to the canvas
@@ -124,25 +130,36 @@ public class theFishingGame {
     }
 
     /**
+     * The movement of the circle, representing the fish.
+     */
+    private void fishMovement() {
+        //------------TO DO-------------: should we add a new class?? (fishRep)
+    }
+
+    /**
      * If the fish is within range, return true;
      * If the fish is out of range, return false;
      */
     private boolean success(){
-        return true;   
+        return true;
     }
 
     /**
      * If success, randomly pick a fish, put its name and attribute to the backpack.
      * Add the name and the attribute to the canvas, and the name into the backpack list.
      */
-    private void retrieve(boolean success){
-
+    private void retrieve(boolean success, CanvasWindow canvas, GraphicsText notSuccess){
+        if (success){
+            //------------TO DO-------------: generate a fish, find its weight, add name and attribute to the backpack list;
+        } else {
+            canvas.add(notSuccess);
+        }
     }
 
     /**
-     * Check if the backpack is full
+     * Check if the backpack is full.
      * If equals 10, return true;
-     * If within 10, return false;
+     * if within 10, return false.
      */
     private boolean fullBackPack(){
         if (backpack.size() < 10){
